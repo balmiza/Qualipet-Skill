@@ -14,7 +14,7 @@ A Qualipet é uma **loja de produtos para cães e gatos na Shopee**. Todo conte�
 ```yaml
 # === PERFIL DE MARCA QUALIPET ===
 nome: "QualiPet"
-arroba: "@qualipett"
+arroba: "@qualipetbrasil"
 segmento: "Loja de produtos para cães e gatos — vendas pela Shopee"
 canal_de_venda: "Shopee (link na bio)"
 
