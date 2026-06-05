@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!--
+    =====================================================
+    QUALIPET — BASE TEMPLATE DE POST INSTAGRAM
+    Formato padrão: Feed 1080x1080
+    Uso: copie este arquivo e substitua os marcadores
+         [ENTRE COLCHETES] pelo conteúdo do post.
+    =====================================================
+  -->
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* --- Paleta Qualipet (não altere) --- */
+      --primaria:   #E07020;   /* laranja dominante */
+      --secundaria: #F5A623;   /* laranja-dourado */
+      --apoio:      #3D2B1F;   /* marrom-escuro, texto principal */
+      --clara:      #FAF5EF;   /* creme suave, fundo padrão */
+      --branco:     #FFFFFF;
+      --fonte:      'Nunito', sans-serif;
+    }
+
+    body {
+      width:  1080px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: var(--fonte);
+      background: var(--clara);
+    }
+
+    /* ── CANVAS ─────────────────────────────────── */
+    .canvas {
+      width:  1080px;
+      height: 1080px;
+      position: relative;
+      /*
+        FUNDO: troque por uma das opções abaixo conforme o post.
+        Opção A (padrão — creme):      background: var(--clara);
+        Opção B (gradiente suave):     background: linear-gradient(145deg, #fff 0%, #FAF5EF 100%);
+        Opção C (laranja como fundo):  background: var(--primaria);  [ajuste textos para branco]
+        Opção D (foto de fundo):       adicione <img class="foto-fundo"> e use .overlay
+      */
+      background: linear-gradient(145deg, #ffffff 0%, #FAF5EF 100%);
+    }
+
+    /* ── DECORAÇÃO DE FUNDO (orgânica, baixa opacidade) ── */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--primaria);
+      opacity: 0.07;
+      pointer-events: none;
+    }
+    .blob-1 { width: 700px; height: 700px; top: -280px; right: -220px; }
+    .blob-2 { width: 460px; height: 460px; bottom: -160px; left: -140px; }
+
+    /* Pegadas decorativas (opcional — use como elemento SVG ou emoji) */
+    .patas {
+      position: absolute;
+      font-size: 120px;
+      opacity: 0.05;
+      user-select: none;
+      pointer-events: none;
+    }
+    .patas-1 { bottom: 200px; right: 60px; transform: rotate(-20deg); }
+    .patas-2 { top: 300px; left: 40px; transform: rotate(15deg); }
+
+    /* ── FAIXA SUPERIOR (identidade) ─────────────── */
+    .topo-faixa {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 14px;
+      background: var(--primaria);
+    }
+
+    /* ── ÁREA DE CONTEÚDO (margem de segurança 80px) ── */
+    .conteudo {
+      position: absolute;
+      top: 80px; left: 80px; right: 80px; bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* ── LOGO ──────────────────────────────────── */
+    .logo {
+      height: 90px;
+      object-fit: contain;
+      align-self: flex-start;
+    }
+
+    /* ── CORPO CENTRAL ──────────────────────────── */
+    .corpo {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 28px;
+      padding: 20px 0;
+    }
+
+    /* Badge / pílula de categoria
+       Exemplos de texto: 🐾 NOVIDADE · 🔥 PROMOÇÃO · ✨ DESTAQUE · 🐶 PARA CÃES · 🐱 PARA GATOS */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primaria);
+      color: var(--branco);
+      font-size: 28px;
+      font-weight: 700;
+      padding: 10px 30px;
+      border-radius: 100px;
+      align-self: flex-start;
+      letter-spacing: 0.5px;
+    }
+
+    /* Título principal
+       Tamanho recomendado: 72–100px para textos curtos (1–3 palavras)
+                            56–72px para textos médios (4–6 palavras)
+                            44–56px para textos longos  */
+    .titulo {
+      font-size: 88px;
+      font-weight: 800;
+      color: var(--apoio);
+      line-height: 1.05;
+    }
+
+    /* Destaque de preço ou percentual (opcional — remova se não usar) */
+    .preco {
+      font-size: 60px;
+      font-weight: 800;
+      color: var(--primaria);
+      line-height: 1;
+    }
+
+    /* Subtítulo / benefício / detalhe do produto */
+    .subtitulo {
+      font-size: 36px;
+      font-weight: 600;
+      color: var(--apoio);
+      opacity: 0.72;
+      line-height: 1.35;
+    }
+
+    /* ── CTA SHOPEE ─────────────────────────────── */
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--primaria);
+      color: var(--branco);
+      font-size: 34px;
+      font-weight: 800;
+      padding: 22px 52px;
+      border-radius: 100px;
+      align-self: flex-start;
+      /* Texto padrão: "Compre na Shopee 🛒"
+         Variações: "Garanta o seu na Shopee 🛒" · "Ver na loja 🔗" · "Oferta no link da bio 🛒" */
+    }
+
+    /* ── RODAPÉ ─────────────────────────────────── */
+    .rodape {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .arroba {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--primaria);
+    }
+
+    /* ── SELO DE DESCONTO (opcional — remova se não for promoção) ── */
+    .selo {
+      position: absolute;
+      top: 80px;
+      right: 80px;
+      width: 190px;
+      height: 190px;
+      background: var(--primaria);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--branco);
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(224,112,32,0.35);
+    }
+    .selo-valor  { font-size: 68px; font-weight: 800; line-height: 1; }
+    .selo-label  { font-size: 26px; font-weight: 700; }
+
+    /* ── FOTO DE FUNDO (opcional — ative quando houver imagem) ── */
+    .foto-fundo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(250,245,239,0.55) 0%, rgba(250,245,239,0.92) 100%);
+      z-index: 1;
+    }
+    /* Quando usar foto+overlay, adicione z-index:2 ao .conteudo */
+  </style>
+</head>
+<body>
+<div class="canvas">
+
+  <!-- FUNDO ORGÂNICO -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="patas patas-1">🐾</div>
+  <div class="patas patas-2">🐾</div>
+
+  <!-- Faixa de identidade no topo -->
+  <div class="topo-faixa"></div>
+
+  <!-- ══════════════════════════════════════════════
+       SELO DE DESCONTO — remova este bloco se não for promoção
+       ══════════════════════════════════════════════ -->
+  <!-- <div class="selo">
+    <span class="selo-valor">[%]</span>
+    <span class="selo-label">OFF</span>
+  </div> -->
+
+  <!-- ══════════════════════════════════════════════
+       FOTO DE FUNDO — remova estes dois elementos se não usar foto
+       ══════════════════════════════════════════════ -->
+  <!-- <img class="foto-fundo" src="[CAMINHO-DA-FOTO]" alt=""> -->
+  <!-- <div class="overlay"></div> -->
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="conteudo">
+
+    <!-- Logo -->
+    <img class="logo" src="./logo.png" alt="QualiPet">
+
+    <!-- Corpo -->
+    <div class="corpo">
+
+      <!-- Badge: troque o emoji e o texto pelo tipo de post -->
+      <div class="badge">🐾 [TIPO DO POST]</div>
+
+      <!-- Título: troque pelo nome do produto ou frase principal -->
+      <div class="titulo">[TÍTULO DO POST]</div>
+
+      <!-- Preço: descomente e troque se for post de produto com preço -->
+      <!-- <div class="preco">R$ [PREÇO]</div> -->
+
+      <!-- Subtítulo: benefício, detalhe ou chamada secundária -->
+      <div class="subtitulo">[Benefício ou detalhe em até duas linhas]</div>
+
+      <!-- CTA fixo para Shopee -->
+      <div class="cta">Compre na Shopee 🛒</div>
+
+    </div>
+
+    <!-- Rodapé -->
+    <div class="rodape">
+      <span class="arroba">@qualipett</span>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

@@ -41,9 +41,15 @@ Regras visuais:
 - Contraste mínimo AA: texto escuro (`--apoio`) sobre fundo creme, ou texto branco sobre laranja.
 - CTA da Shopee sempre visível: pílula laranja com "Compre na Shopee 🛒" ou similar.
 
+## Base template
+
+**Sempre use `references/template-post.html` como ponto de partida.** Copie o arquivo, substitua os marcadores `[ENTRE COLCHETES]` e ative/desative os blocos opcionais comentados no HTML (selo de desconto, foto de fundo, preço).
+
+O template já inclui: paleta de cores, fontes, blobs de fundo, faixa laranja no topo, logo, badge, título, subtítulo, CTA Shopee e arroba no rodapé.
+
 ## Templates de layout
 
-Cada template é um ponto de partida; adapte ao tema. Sempre saída HTML único.
+Cada template é uma variação do arquivo base; adapte ao tema. Sempre saída HTML único.
 
 ### 1. `promo-produto` — Promoção / desconto
 

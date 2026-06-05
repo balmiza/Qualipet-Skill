@@ -73,12 +73,11 @@ Entregue a legenda em bloco de texto pronto para copiar.
 Leia `references/arte.md` para os specs detalhados e os templates de layout.
 Resumo do fluxo:
 
-1. Escolha o template adequado (`promo-produto`, `lancamento`, `top-produtos`, `data-comemorativa`, `institucional`) descritos em `references/arte.md`.
-2. Construa a arte como **HTML/CSS** em um arquivo único, no tamanho exato do formato.
-3. Aplique as cores e fontes do perfil de marca. Importe as fontes via Google Fonts.
-4. Use o logo de `references/logo.png`.
-5. **Renderize para PNG** com a dimensão exata (script em `scripts/render.py`).
-6. Para carrossel, gere uma arte por slide (capa + conteúdo + CTA final).
+1. **Abra `references/template-post.html`** — é o arquivo base de todos os posts. Copie-o e substitua os marcadores `[ENTRE COLCHETES]` pelo conteúdo do post.
+2. Consulte `references/arte.md` para escolher a variação de layout (`promo-produto`, `lancamento`, `top-produtos`, `data-comemorativa`, `institucional`) e os ajustes específicos de cada tipo.
+3. Ative ou remova os blocos opcionais comentados no template: **selo de desconto**, **foto de fundo** e **preço**.
+4. **Renderize para PNG** com a dimensão exata (script em `scripts/render.py`).
+5. Para carrossel, copie o template uma vez por slide (capa + conteúdo + CTA final).
 
 Princípios visuais (ver detalhes no reference):
 - Hierarquia clara: 1 título dominante, 1 informação de apoio, 1 CTA.
